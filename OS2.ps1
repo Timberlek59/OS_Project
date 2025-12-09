@@ -32,6 +32,14 @@ do {
         Write-Host $line
     }
 
+$save = Read-Host "`nSouhaitez-vous enregistrer cette table dans un fichier texte ? (o/n)"
+
+    if ($save -eq "o") {
+        $fileName = "Table_$number.txt"
+        $tableLines | Out-File $fileName -Encoding UTF8
+        Write-Host "Fichier enregistré sous : $fileName" -ForegroundColor Green
+    }
+
 } while ($restart -eq "o")
 
 Write-Host "`nFin du programme."
